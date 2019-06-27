@@ -8,10 +8,14 @@
   </head>
 
   <body>
+    <a-assets>
+      <a-asset-item id="fish" src="/assets/koi_fish/scene.gltf" />
+    </a-assets>
+
     <a-scene>
       <a-entity
-        environment="preset: forest; groundColor: #445; groundYScale: 2; groundTexture: walkernoise;
-		     skyColor: #222; horizonColor: #544"
+        environment="preset: forest; groundColor: #445; groundYScale: 1; groundTexture: checkerboard;
+		     groundColor: #567d46, groundColor2: #62a945, skyColor: #222; horizonColor: #544"
       ></a-entity>
 
       <a-entity position="0 0 0">
@@ -20,12 +24,12 @@
       </a-entity>
 
       <a-box
-        color="tomato"
+        gltf-model="#fish"
         position="0 2 -4.5"
         height="0.5"
         width="0.5"
         depth="0.5"
-        id="thebox"
+        id="thefish"
         animation="property: rotation; startEvents: click; from: 0 0 0; to: 360 90 90; dur: 1000"
       ></a-box>
 
