@@ -6,31 +6,22 @@
     <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
     <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v6.0.0/dist/aframe-extras.loaders.min.js"></script>
     <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v4.0.0/dist/aframe-physics-system.min.js"></script>
-    <!-- <script> -->
-    <!--   function clickFish() { -->
-    <!--     document.getElementById("laserHand").remove(); -->
-    <!--     document.getElementById("pickupfish").remove(); -->
+    <script>
+      function clickFish(e) {
+        e.target.removeEventListener(e.type, arguments.callee);
 
-    <!--     let rightHand = document.createElement("a-entity"); -->
-    <!--     rightHand.setAttribute("id", "rightHand"); -->
-    <!--     rightHand.setAttribute("hand-controls", "right"); -->
+        let fishHand = document.getElementById("fishHand");
+        fishHand.setAttribute("visible", "true");
+        fishHand.setAttribute(
+          "shape__main",
+          "shape: box; halfExtents: 1.5 1.5 4"
+        );
 
-    <!--     let fishHand = document.createElement("a-entity"); -->
-    <!--     fishHand.setAttribute("id", "fishHand"); -->
-    <!--     fishHand.setAttribute("gltf-model", "#fish"); -->
-    <!--     fishHand.setAttribute("static-body", "shape: none;mass: 10"); -->
-    <!--     fishHand.setAttribute( -->
-    <!--       "shape__main", -->
-    <!--       "shape: box;halfExtents: 1.5 1.5 4" -->
-    <!--     ); -->
-    <!--     fishHand.setAttribute("position", "-0.3 -0.03 -0.168"); -->
-    <!--     fishHand.setAttribute("rotation", "0 -120 90"); -->
-    <!--     fishHand.setAttribute("scale", "0.09 0.09 0.09"); -->
+        document.getElementById("pickupfish").setAttribute("visible", "false");
+      }
 
-    <!--     rightHand.appendChild(fishHand); -->
-    <!--     document.getElementById("controlHand").appendChild(rightHand); -->
-    <!--   } -->
-    <!-- </script> -->
+      window.addEventListener("gripdown", clickFish);
+    </script>
   </head>
 
   <body>
@@ -52,12 +43,13 @@
           id="fishHand"
           gltf-model="#fish"
           static-body="shape: none; mass: 10"
-          shape__main="shape: box; halfExtents: 1.5 1.5 4"
           position="-0.3 -0.03 -0.168"
           rotation="0 -120 90"
           scale="0.09 0.09 0.09"
+          visible="false"
         ></a-entity>
       </a-entity>
+      <!-- shape__main="shape: box; halfExtents: 1.5 1.5 4" -->
 
       <!-- the invisible ground for collision -->
       <a-box
@@ -76,22 +68,20 @@
       </a-entity>
 
       <!-- the fish you're supposed to pick up -->
-      <!-- <a-entity -->
-      <!--   id="pickupfish" -->
-      <!--   gltf-model="#fish" -->
-      <!--   dynamic-body="shape: none;" -->
-      <!--   shape__main="shape: box;halfExtents: 1.5 1.5 4" -->
-      <!--   position="-1 1.5 -1" -->
-      <!--   scale="0.09 0.09 0.09" -->
-      <!--   onclick="clickFish()" -->
-      <!-- ></a-entity> -->
+      <a-entity
+        id="pickupfish"
+        gltf-model="#fish"
+        position="-0.25 2 -0.5"
+        rotation="-90 0 0"
+        scale="0.09 0.09 0.09"
+      ></a-entity>
 
       <!-- the golf ball -->
       <a-sphere
-        dynamic-body="mass: 0.1; linearDamping: 0.005"
+        dynamic-body="mass: 0.2; linearDamping: 0.005"
         color="#FFF"
         radius="0.15"
-        position="0.4 2 -0.2"
+        position="0.4 2 -0.22"
       ></a-sphere>
 
       <!-- the golf tee -->
@@ -100,7 +90,7 @@
         width="0.1"
         height="1"
         depth="0.1"
-        position="0.5 0 -0.1"
+        position="0.4 0 -0.22"
         color="tomato"
       ></a-box>
       <!--     <a-cone static-body color="tomato" radius-bottom="0.01" radius-top="0.1" position="0 0 -3" open-ended="true"></a-cone> -->
