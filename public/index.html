@@ -59,21 +59,21 @@
         ></a-entity>
       </a-entity>
 
-      <!-- the pond -->
-      <a-entity>
-        <a-circle color="skyblue" position="-5 0.1 -6" radius="3" rotation="-90 0 0"></a-circle>
-        <a-circle color="skyblue" position="-3 0.1 -8" radius="3" rotation="-90 0 0"></a-circle>
-        <a-circle color="skyblue" position="-7 0.1 -6" radius="3" rotation="-90 0 0"></a-circle>
-      </a-entity>
-
       <!-- the invisible ground for collision -->
       <a-box
         static-body
         width="100"
-        height="0.1"
+        height="0.01"
         depth="100"
-        visible="false"
+        visible="true"
       ></a-box>
+
+      <!-- the pond -->
+      <a-entity>
+        <a-cylinder color="skyblue" height="3" radius="3" position="-4 -1.49 -8"></a-cylinder>
+        <a-cylinder color="skyblue" height="3" radius="3" position="-3 -1.49 -5"></a-cylinder>
+        <a-cylinder color="skyblue" height="3" radius="4" position="-5 -1.49 -6"></a-cylinder>
+      </a-entity>
 
       <!-- the fish you're supposed to pick up -->
       <!-- <a-entity -->
@@ -100,7 +100,7 @@
         width="0.1"
         height="1"
         depth="0.1"
-        position="0.4 0 -0.2"
+        position="0.5 0 -0.1"
         color="tomato"
       ></a-box>
       <!--     <a-cone static-body color="tomato" radius-bottom="0.01" radius-top="0.1" position="0 0 -3" open-ended="true"></a-cone> -->
