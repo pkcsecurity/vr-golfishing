@@ -10,12 +10,12 @@
   <body>
     <a-scene>
       <a-assets>
-        <a-asset-item id="fish" src="/assets/koi_fish/scene.gltf" />
+        <a-asset-item id="fish" src="/assets/low_poly_fish/scene.gltf" />
       </a-assets>
 
       <a-entity
-        environment="preset: forest; groundColor: #445; groundYScale: 2; groundTexture: squares;
-		     groundColor: #567d46; groundColor2: #62a945; skyColor: #222; horizonColor: #544"
+        environment="preset: forest; skyColor: #222; horizonColor: #544; groundYScale: 2;
+		     groundTexture: checkerboard; groundColor: #567d46; groundColor2: #58a045"
       ></a-entity>
 
       <a-entity position="0 0 0">
@@ -23,21 +23,19 @@
         <a-camera></a-camera>
       </a-entity>
 
-      <a-box
+      <a-entity
         gltf-model="#fish"
-        position="0 2 -4.5"
-        height="0.5"
-        width="0.5"
-        depth="0.5"
-        id="thefish"
+        position="0 2 -2"
+        rotation="0 90 0"
+        scale="0.1 0.1 0.1"
         animation="property: rotation; startEvents: click; from: 0 0 0; to: 360 90 90; dur: 1000"
-      ></a-box>
+      ></a-entity>
 
       <a-light
         id="unanimated-light"
         type="point"
         intensity=".5"
-        position="0 6 4"
+        position="0 5 3"
       ></a-light>
     </a-scene>
   </body>
